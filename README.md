@@ -74,7 +74,7 @@ Every completed test is saved to `localStorage`. The history panel shows your la
 No build step. No npm. No config. Just open a file.
 
 ```bash
-git clone https://github.com/heyfaraninam/typing-speed.git
+git clone https://github.com/heyfaraninam/Typing-Speed.git
 cd typing-speed
 open index.html
 ```
