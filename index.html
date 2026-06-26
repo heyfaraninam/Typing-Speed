@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Typing Speed ✦</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<div class="mesh"></div>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+<input type="text" class="hidden-inp" id="hidden-inp" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+
+<div class="app">
+
+  <!-- HEADER -->
+  <header class="header glass">
+    <div class="brand">
+      <div class="brand-dot"></div>
+      Typing Speed ✦
+    </div>
+    <div class="controls">
+      <span class="ctrl-label">Time</span>
+      <div class="pill-group">
+        <button class="pill" data-dur="15" onclick="setDuration(15,this)">15s</button>
+        <button class="pill active" data-dur="30" onclick="setDuration(30,this)">30s</button>
+        <button class="pill" data-dur="60" onclick="setDuration(60,this)">60s</button>
+        <button class="pill" data-dur="120" onclick="setDuration(120,this)">120s</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- LIVE STATS -->
+  <div class="live-bar glass">
+    <div class="live-stat">
+      <div class="live-val accent" id="live-wpm">0</div>
+      <div class="live-lbl">WPM</div>
+    </div>
+    <div class="live-divider"></div>
+    <div class="live-stat">
+      <div class="live-val" id="live-acc">100%</div>
+      <div class="live-lbl">Accuracy</div>
+    </div>
+    <div class="live-divider"></div>
+    <div class="live-stat">
+      <div class="live-val" id="live-time">30</div>
+      <div class="live-lbl">Seconds</div>
+    </div>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="progress-wrap glass" style="border-radius:6px;">
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
+
+  <!-- TYPING AREA -->
+  <div class="typing-card glass">
+    <div class="words-display" id="words-display"></div>
+
+    <!-- click to start overlay -->
+    <div class="click-overlay" id="click-overlay" onclick="startTest()">
+      <div class="click-overlay-icon">⌨️</div>
+      Click here to start typing
+    </div>
+
+    <div class="action-row">
+      <button class="restart-btn" onclick="resetTest()">↺ Restart</button>
+      <span class="hint">Tab → restart &nbsp;·&nbsp; Space → next word</span>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="results-card glass" id="results-card">
+    <div class="results-title">✦ Results</div>
+
+    <div class="results-grid">
+      <div class="res-box highlight">
+        <div class="res-icon">⚡</div>
+        <div class="res-val accent" id="res-wpm">—</div>
+        <div class="res-lbl">WPM</div>
+      </div>
+      <div class="res-box">
+        <div class="res-icon">🎯</div>
+        <div class="res-val green" id="res-acc">—</div>
+        <div class="res-lbl">Accuracy</div>
+      </div>
+      <div class="res-box">
+        <div class="res-icon">⏱</div>
+        <div class="res-val blue" id="res-time">—</div>
+        <div class="res-lbl">Time</div>
+      </div>
+    </div>
+
+    <!-- char stats -->
+    <div class="char-row">
+      <div class="char-box">
+        <div class="char-val" id="res-correct">—</div>
+        <div class="char-lbl">Correct</div>
+      </div>
+      <div class="char-box">
+        <div class="char-val pink" id="res-wrong" style="color:var(--accent3)">—</div>
+        <div class="char-lbl">Wrong</div>
+      </div>
+      <div class="char-box">
+        <div class="char-val" id="res-total">—</div>
+        <div class="char-lbl">Total Chars</div>
+      </div>
+      <div class="char-box">
+        <div class="char-val" id="res-words">—</div>
+        <div class="char-lbl">Words</div>
+      </div>
+      <div class="char-box" style="display:none">
+        <div class="char-val pink" id="res-mistakes" style="color:var(--accent3)">—</div>
+        <div class="char-lbl">Mistakes</div>
+      </div>
+    </div>
+
+    <div class="results-actions">
+      <button class="res-btn primary" onclick="resetTest()">↺ Try Again</button>
+      <button class="res-btn secondary" onclick="document.getElementById('history-card').scrollIntoView({behavior:'smooth'})">View History ↓</button>
+    </div>
+  </div>
+
+  <!-- HISTORY -->
+  <div class="history-card glass" id="history-card">
+    <div class="history-header">
+      <div class="history-title">✦ History</div>
+      <div class="history-clear" onclick="clearHistory()">Clear all</div>
+    </div>
+    <div class="history-list" id="history-list">
+      <div class="history-empty">No runs yet — complete a test to see your history.</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>
